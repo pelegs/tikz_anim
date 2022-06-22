@@ -1,0 +1,3 @@
+An embarassly simple script to generate animations from TikZ/PGFplots.
+Intended for a project I'm planning.
+I will extend and parameterize the script at some point...

@@ -1,0 +1,25 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/pelegs/prog/tikz_anim/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	/p5.9.20210905.0/
+animation_file_path	tikz_anim.py	/^animation_file_path = Path(args.output_file_name)$/;"	v
+args	tikz_anim.py	/^args = parser.parse_args()$/;"	v
+convert_cmd	tikz_anim.py	/^convert_cmd = lambda frame, png_filename: f'convert {args.convert_args} {pdf_file_name} {png_fil/;"	f
+errors	tikz_anim.py	/^errors = []$/;"	v
+ffmpeg_cmd	tikz_anim.py	/^ffmpeg_cmd = f'yes | ffmpeg -i {png_file_names} -vf "fps=120,scale=320:-1:flags=lanczos,split[s0/;"	v
+frame_indices	tikz_anim.py	/^frame_indices = range(args.start_value, args.end_value, args.step_value)$/;"	v
+num_frames	tikz_anim.py	/^num_frames = len(frame_indices)$/;"	v
+p	tikz_anim.py	/^    p = png_name(frame)$/;"	v
+parser	tikz_anim.py	/^parser = argparse.ArgumentParser(description='Create TikZ animations')$/;"	v
+pdf_file_name	tikz_anim.py	/^pdf_file_name = tex_file_path.stem + '.pdf'$/;"	v
+png_file_names	tikz_anim.py	/^png_file_names = tex_file_path.stem + '_frame_' + '%05d' + '.png'$/;"	v
+png_name	tikz_anim.py	/^png_name = lambda n: tex_file_path.stem + f'_frame_{n:05d}.png'$/;"	f
+tex_cmd	tikz_anim.py	/^tex_cmd = lambda x: f'{args.tex_engine} -shell-escape "\\def\\{args.variable_name}{{{x}}} \\inpu/;"	f
+tex_file_path	tikz_anim.py	/^tex_file_path = Path(args.tex_file)$/;"	v

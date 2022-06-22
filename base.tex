@@ -1,0 +1,88 @@
+\documentclass[tikz, crop, border=0mm]{standalone}
+
+\usepackage{xcolor}
+\definecolor{xred}{HTML}{BD4242}
+\definecolor{xblue}{HTML}{4268BD}
+\definecolor{xgreen}{HTML}{52B256}
+\definecolor{xpurple}{HTML}{7F52B2}
+\definecolor{xorange}{HTML}{FD9337}
+
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{arrows.meta, backgrounds}
+\tikzset{
+	white background/.style={show background rectangle, tight background, background rectangle/.style={fill=white}},
+	axisline/.style = {thick, stealth-stealth},
+}
+\tikzset{
+	vector/.style = {ultra thick, ->, >=stealth, cap=round},
+}
+\usepackage{pgfplots}
+\pgfplotsset{
+	compat=1.16,
+	axis line style={stealth-stealth, thick},
+}
+\pgfkeys{
+	/pgfplots/vector plane/.style={
+		axis x line=middle,
+		axis y line=middle,
+		xlabel=$x$,
+		ylabel=$y$,
+		every axis x label/.style={
+			at={(ticklabel* cs:1.02)},
+			anchor=west,
+		},
+		every axis y label/.style={
+			at={(ticklabel* cs:1.02)},
+			anchor=south,
+		},
+		axis line style={stealth-stealth, thick},
+		label style={font=\large},
+		tick label style={font=\large},
+		samples=100,
+		xmin=-10, xmax=10,
+		ymin=-10, ymax=10,
+		domain=-10:10,
+		grid=major,
+		major grid style={black!10},
+	},
+}
+
+\begin{document}
+\begin{tikzpicture}[white background]
+	\begin{axis}[
+			width=8cm, height=8cm,
+			axis lines=center,
+			z buffer=sort,
+			xmin=-4, xmax=4,
+			ymin=-4, ymax=4,
+			zmin=-4, zmax=4,
+			xtick=\empty,
+			ytick=\empty,
+			ztick=\empty,
+			view={\th}{20},
+		]
+		% Behind surface at z=0
+		\draw[stealth-, thick] (0,0,-4) -- (0,0,0);
+		\addplot3[surf, faceted color=xgreen!50!black!50, fill=xgreen!20, opacity=0.9, domain=-4:4, y domain=-4:0, samples=7] {0.4*y};
+
+		% Surface at z=0
+		\addplot3[surf, faceted color=xblue!50!black!50, fill=xblue!20, opacity=0.9, domain=-4:4, samples=7] {0};
+
+		% Back axis line
+		\draw[-stealth] (0,0,0) -- (0,4,0) node[pos=1.075] {$y$};
+		
+		% Infront of surface at z=0
+		\addplot3[surf, faceted color=xgreen!50!black!50, fill=xgreen!20, opacity=0.9, domain=-4:4, y domain=0:4, samples=7] {0.4*y};
+
+		% Vectors
+		\draw[vector] (0,0,0) -- (-2,3,1.2) node[pos=1.15] {$\vec{a}$};
+		\draw[vector] (0,0,0) -- (+3,3,1.2) node[pos=1.12] {$\vec{b}$};
+
+		% Front axis lines
+		\draw[axisline] (-4,0,0) -- (4,0,0) node[pos=1.05] {$x$};
+		\draw[stealth-, thick] (0,-4,0) -- (0,0,0);
+		\draw[-stealth, thick] (0,0,0) -- (0,0,4) node[pos=1.075] {$z$};
+	\end{axis}
+\end{tikzpicture}
+\end{document}
