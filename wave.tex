@@ -1,0 +1,59 @@
+\documentclass[tikz, crop, border=0mm]{standalone}
+
+\usepackage{xcolor}
+\definecolor{xred}{HTML}{BD4242}
+\definecolor{xblue}{HTML}{4268BD}
+\definecolor{xgreen}{HTML}{52B256}
+\definecolor{xpurple}{HTML}{7F52B2}
+\definecolor{xorange}{HTML}{FD9337}
+
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{arrows.meta, backgrounds}
+\tikzset{
+	white background/.style={show background rectangle, tight background, background rectangle/.style={fill=white}},
+	axisline/.style = {thick, stealth-stealth},
+}
+\tikzset{
+	vector/.style = {ultra thick, ->, >=stealth, cap=round},
+}
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.16}
+
+\begin{document}
+\begin{tikzpicture}
+	\begin{axis}[
+		set layers,
+		xlabel=$x$,
+		ylabel=$y$,
+		grid=both,
+		minor tick num=4,
+		grid style={line width=.1pt, draw=gray!10},
+		major grid style={line width=.2pt,draw=gray!50},
+		axis lines=middle,
+		axis line style={stealth-stealth, thick},
+		every axis x label/.style={
+			at={(ticklabel* cs:1)},
+			anchor=west,
+		},
+		every axis y label/.style={
+			at={(ticklabel* cs:1)},
+			anchor=south,
+		},
+		samples=1000,
+		width=14cm, height=7cm,
+		xmin=-14, xmax=14,
+		ymin=-2, ymax=2,
+		xtick={-5*pi,-4*pi,...,5*pi},
+		xticklabels={, $-4\pi$, $-3\pi$, $-2\pi$, $-\pi$, , $\pi$, $2\pi$, $3\pi$, $4\pi$, },
+		domain=-14:14,
+		]
+		\pgfmathsetmacro{\phd}{deg(\ph)}
+		\addplot[name path=xaxis] {0};
+		\addplot[name path=A, very thick, xblue] {cos(2*deg(x)+2*\phd)+0.5*cos(1.5*deg(x)+4*\phd)};
+		\addplot[fill=xblue, fill opacity=0.2] fill between[of=A and xaxis];
+		\node[thick, draw=xblue, fill=white, rounded corners, text=xblue, anchor=west, text width=2cm] at ({-4*pi}, 1.75) {$\phi=\ph$};
+	\end{axis}
+\end{tikzpicture}
+\end{document}

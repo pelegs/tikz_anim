@@ -14,12 +14,14 @@ args	tikz_anim.py	/^args = parser.parse_args()$/;"	v
 convert_cmd	tikz_anim.py	/^convert_cmd = lambda frame, png_filename: f'convert {args.convert_args} {pdf_file_name} {png_fil/;"	f
 errors	tikz_anim.py	/^errors = []$/;"	v
 ffmpeg_cmd	tikz_anim.py	/^ffmpeg_cmd = f'yes | ffmpeg -i {png_file_names} -vf "fps=120,scale=320:-1:flags=lanczos,split[s0/;"	v
-frame_indices	tikz_anim.py	/^frame_indices = range(args.start_value, args.end_value, args.step_value)$/;"	v
+frame_indices	tikz_anim.py	/^frame_indices = [x for x in range(len(var_values))]$/;"	v
+np	tikz_anim.py	/^import numpy as np$/;"	I	nameref:module:numpy
 num_frames	tikz_anim.py	/^num_frames = len(frame_indices)$/;"	v
 p	tikz_anim.py	/^    p = png_name(frame)$/;"	v
 parser	tikz_anim.py	/^parser = argparse.ArgumentParser(description='Create TikZ animations')$/;"	v
 pdf_file_name	tikz_anim.py	/^pdf_file_name = tex_file_path.stem + '.pdf'$/;"	v
 png_file_names	tikz_anim.py	/^png_file_names = tex_file_path.stem + '_frame_' + '%05d' + '.png'$/;"	v
 png_name	tikz_anim.py	/^png_name = lambda n: tex_file_path.stem + f'_frame_{n:05d}.png'$/;"	f
-tex_cmd	tikz_anim.py	/^tex_cmd = lambda x: f'{args.tex_engine} -shell-escape "\\def\\{args.variable_name}{{{x}}} \\inpu/;"	f
+tex_cmd	tikz_anim.py	/^tex_cmd = lambda x: f'{args.tex_engine} -shell-escape "\\def\\{args.variable_name}{{{x:0.3f}}} \\/;"	f
 tex_file_path	tikz_anim.py	/^tex_file_path = Path(args.tex_file)$/;"	v
+var_values	tikz_anim.py	/^var_values = np.arange(args.start_value, args.end_value+args.step_value, args.step_value)$/;"	v
